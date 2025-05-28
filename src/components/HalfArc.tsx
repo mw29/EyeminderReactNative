@@ -14,55 +14,36 @@ const HalfArc: React.FC<HalfArcProps> = ({progress, totalWearableDays}) => {
   const centerX = size / 2;
   const centerY = size / 2;
 
-  // Convert angles to radians and adjust for SVG coordinate system
-  // 270 starts the arc at the left
-  // 0 - top
-  // 90 - right
-  // 180 - bottom
   const startRad = (270 - 90) * (Math.PI / 180);
-  // Math.PI = clockwise, -Math.PI = counterclockwise
   const fullEndRad = startRad + Math.PI;
 
-  // Calculate progress-based end angle
-  const progressRadians =
+  const progressRad =
     Math.PI * (Math.max(0, Math.min(100, progress)) / totalWearableDays);
 
-  // clockwise: startRad + progressRadians
-  // counterclockwise: startRad - progressRadians
-  const progressEndRad = startRad + progressRadians;
+  const progressEndRad = startRad + progressRad;
 
-  // Calculate start and end points for full arc (background)
   const startX = centerX + radius * Math.cos(startRad);
   const startY = centerY + radius * Math.sin(startRad);
   const fullEndX = centerX + radius * Math.cos(fullEndRad);
   const fullEndY = centerY + radius * Math.sin(fullEndRad);
 
-  // Calculate end point for progress arc
   const progressEndX = centerX + radius * Math.cos(progressEndRad);
   const progressEndY = centerY + radius * Math.sin(progressEndRad);
 
-  // Determine the large arc flag based on direction
-  const largeArcFlag = 0; // Always 0 for half arc (180 degrees)
+  const largeArcFlag = 0;
 
-  // clockwise: 1
-  // counterclockwise: 0
   const sweepFlag = 1;
 
-  // Determine large arc flag for progress (only if progress > 50%)
-  const progressLargeArcFlag = progress > 50 ? 1 : 0;
-
-  // Create the SVG path for full background arc
   const backgroundPathData = [
-    `M ${startX} ${startY}`, // Move to start point
-    `A ${radius} ${radius} 0 ${largeArcFlag} ${sweepFlag} ${fullEndX} ${fullEndY}`, // Arc to end point
+    `M ${startX} ${startY}`, 
+    `A ${radius} ${radius} 0 ${largeArcFlag} ${sweepFlag} ${fullEndX} ${fullEndY}`, 
   ].join(' ');
 
-  // Create the SVG path for progress arc
   const progressPathData =
     progress > 0
       ? [
-          `M ${startX} ${startY}`, // Move to start point
-          `A ${radius} ${radius} 0 ${progressLargeArcFlag} ${sweepFlag} ${progressEndX} ${progressEndY}`, // Arc to progress point
+          `M ${startX} ${startY}`, 
+          `A ${radius} ${radius} 0 ${largeArcFlag} ${sweepFlag} ${progressEndX} ${progressEndY}`, // Arc to progress point
         ].join(' ')
       : '';
 
