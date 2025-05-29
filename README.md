@@ -1,15 +1,13 @@
 # Eyeminder
-
 This repo contains the source code for the **Eyeminder App**, a mobile application built with React Native.
 
-For additional context, patterns, and best practices used in this project, check out the [**Stratos App Development Guilds**](https://stratos.rocks/), which provide in-depth guides based on real-world development.
+For more information and additional resources check out [**Stratos Guides**](https://stratos.rocks/)!
 
 ## React Native Guides 
 
 ### 🚀 Getting Started
 
 - [**Creating a React Native App without Expo**](https://stratos.rocks/guides/react-native/basics/create-rn-app-without-expo/)  
-  Learn how to bootstrap a clean React Native app without relying on Expo.
 
 ### 📦 Navigation & Layout
 
