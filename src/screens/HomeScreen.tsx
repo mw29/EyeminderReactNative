@@ -2,6 +2,7 @@ import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {HomeScreenNavigationProp} from '../types/NavigationTypes';
 import DayCounter from '../components/DayCounter';
+import BottomButtons from '../components/BottomButtons';
 
 type Props = {
   navigation: HomeScreenNavigationProp;
@@ -14,10 +15,10 @@ function HomeScreen({navigation}: Props): React.JSX.Element {
         <Text style={styles.headerText}>Eyeminder</Text>
       </View>
       <View style={styles.centerContainer}>
-        <DayCounter/>
+        <DayCounter />
       </View>
       <View style={styles.footerContainer}>
-        <Text>BOTTOM</Text>
+        <BottomButtons />
       </View>
     </View>
   );
